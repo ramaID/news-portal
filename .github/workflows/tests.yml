@@ -1,0 +1,54 @@
+name: Code Quality
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    container:
+      image: ramaid/image:php8.4-fullstack-cli-v2.5.0
+      options: --user root
+      volumes:
+        - /run/docker:/run/docker
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Setup Environment
+        run: |
+          cp .env.example .env
+          php artisan migrate --force
+          php artisan key:generate
+          php artisan laravolt:link
+
+      - name: Tests
+        run: |
+          XDEBUG_MODE=coverage php artisan test --coverage \
+            --coverage-clover=coverage.xml \
+            --log-junit=results.xml
+
+      - name: SonarQube Self Hosted
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_MC_TOKEN }}
+        run: |
+          sonar-scanner -Dsonar.token=$SONAR_TOKEN -Dsonar.host.url=https://sonar.malescast.tech/
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
