@@ -44,9 +44,3 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_MC_TOKEN }}
         run: |
           sonar-scanner -Dsonar.token=$SONAR_TOKEN -Dsonar.host.url=https://sonar.malescast.tech/
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
