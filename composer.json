@@ -59,7 +59,7 @@
         ],
         "test": [
             "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "XDEBUG_MODE=coverage php artisan test --coverage"
         ],
         "format": [
             "./vendor/bin/pint"
