@@ -13,10 +13,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->ulid()->primary();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignUlid('post_id')->constrained()->onDelete('cascade');
-            $table->text('content');
+            $table->ulid('id')->primary();
+            $table->foreignUlid('post_id')->constrained('posts')->cascadeOnDelete();
+            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
+            $table->text('body');
             $table->boolean('is_approved')->default(false);
             $table->timestamps();
             $table->softDeletes();

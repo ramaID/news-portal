@@ -23,7 +23,9 @@ class AclSeeder extends Seeder
         Artisan::call('laravolt:sync-permission');
 
         // Berikan semua izin kepada admin (wildcard)
-        $admin->syncPermission(['*']);
+        $admin->syncPermission(
+            ['*'] + \Laravolt\Platform\Models\Permission::all()->pluck('name')->toArray()
+        );
 
         // Berikan izin tertentu kepada peran Penulis
         $writer->syncPermission([
