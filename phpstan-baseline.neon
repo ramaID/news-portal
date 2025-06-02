@@ -1,0 +1,127 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Class App\\Enums\\Permission extends generic class BenSampo\\Enum\\Enum but does not specify its types\: TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Enums/Permission.php
+
+		-
+			message: '#^Class App\\Enums\\UserStatus extends generic class BenSampo\\Enum\\Enum but does not specify its types\: TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Enums/UserStatus.php
+
+		-
+			message: '#^Instanceof between Laravolt\\Contracts\\CanResetPassword and Laravolt\\Contracts\\CanResetPassword will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: app/Http/Controllers/Auth/ForgotPasswordController.php
+
+		-
+			message: '#^Parameter \#1 \$key of function trans expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Auth/ForgotPasswordController.php
+
+		-
+			message: '#^Parameter \#2 \$replace of function trans expects array\<string, bool\|float\|int\|string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Auth/ForgotPasswordController.php
+
+		-
+			message: '#^Cannot call method forceFill\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Http/Controllers/Auth/ResetPasswordController.php
+
+		-
+			message: '#^Cannot call method save\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Http/Controllers/Auth/ResetPasswordController.php
+
+		-
+			message: '#^Parameter \#1 \$user of class Illuminate\\Auth\\Events\\PasswordReset constructor expects Illuminate\\Contracts\\Auth\\Authenticatable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Auth/ResetPasswordController.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: app/Http/Controllers/Auth/VerificationController.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 2
+			path: app/Http/Controllers/My/PasswordController.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: app/Http/Controllers/My/ProfileController.php
+
+		-
+			message: '#^Class App\\Models\\Comment uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types\: TFactory$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: '#^Method App\\Models\\Comment\:\:member\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: '#^Method App\\Models\\Comment\:\:post\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: '#^Class App\\Models\\Post uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types\: TFactory$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Post.php
+
+		-
+			message: '#^Method App\\Models\\Post\:\:comments\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Post.php
+
+		-
+			message: '#^Method App\\Models\\Post\:\:topic\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Post.php
+
+		-
+			message: '#^Method App\\Models\\Post\:\:writer\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Post.php
+
+		-
+			message: '#^Class App\\Models\\Topic uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types\: TFactory$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Topic.php
+
+		-
+			message: '#^Method App\\Models\\Topic\:\:posts\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Topic.php
+
+		-
+			message: '#^Class App\\Models\\User uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types\: TFactory$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/User.php

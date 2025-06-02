@@ -3,21 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravolt\Suitable\AutoFilter;
-use Laravolt\Suitable\AutoSearch;
-use Laravolt\Suitable\AutoSort;
 
 class Topic extends Model
 {
-    use HasUlids;
+    use HasFactory, HasUlids, SoftDeletes;
 
-    use SoftDeletes;
+    protected $fillable = ['name', 'slug', 'description'];
 
-    use AutoSearch, AutoSort, AutoFilter;
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
-    protected $guarded = [];
-
-    protected $searchableColumns = ["ulid", "name", "slug", "description",];
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }

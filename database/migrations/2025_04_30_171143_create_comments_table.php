@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignUlid('post_id')->constrained()->onDelete('cascade');
-            $table->text('content');
+            $table->foreignUlid('post_id')->constrained('posts')->cascadeOnDelete();
+            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
+            $table->text('body');
             $table->boolean('is_approved')->default(false);
             $table->timestamps();
             $table->softDeletes();
