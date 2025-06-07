@@ -1,6 +1,5 @@
-	{!! form()->text('name')->label('Name') !!}
-	{!! form()->text('slug')->label('Slug') !!}
-	{!! form()->textarea('description')->label('Description') !!}
+{!! form()->text('name')->label('Name') !!}
+{!! form()->textarea('description')->label('Description') !!}
 
 {!!
     form()->action([

@@ -22,7 +22,7 @@ class TopicTableView extends TableView
             Text::make('name')->sortable(),
             Text::make('slug')->sortable(),
             Text::make('description')->sortable(),
-            RestfulButton::make('modules::topic'),
+            RestfulButton::make('modules::topic')->except('show'),
         ];
     }
 }
