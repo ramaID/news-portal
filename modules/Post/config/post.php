@@ -1,7 +1,5 @@
 <?php
 
-use App\Enums\Permission;
-
 return [
     'routes' => [
         'enabled' => true,
@@ -14,5 +12,5 @@ return [
     'menu' => [
         'enabled' => true,
     ],
-    'permission' => [Permission::TOPIC_VIEW],
+    'permission' => [],
 ];
