@@ -5,9 +5,6 @@ namespace Modules\Topic\Tests;
 use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use Illuminate\Support\Facades\Artisan;
-use Laravolt\Platform\Models\Permission;
-use Laravolt\Platform\Models\Role;
 use Tests\TestCase;
 
 class TopicTest extends TestCase
@@ -21,21 +18,7 @@ class TopicTest extends TestCase
     {
         parent::setUp();
 
-        // Buat pengguna admin
-        Artisan::call('laravolt:admin Administrator admin@laravolt.dev secret');
-
-        Artisan::call('laravolt:sync-permission');
-
-        $admin = Role::firstOrCreate(['name' => 'admin']);
-        $admin->syncPermission(
-            ['*'] + \Laravolt\Platform\Models\Permission::all()->pluck('name')->toArray()
-        );
-
-        $admin = User::query()->where('email', 'admin@laravolt.dev')->first();
-        $admin->assignRole('admin');
-
-        $this->user = $admin;
-        $this->actingAs($this->user);
+        $this->actingAs($this->getAdminUser());
     }
 
     #[\PHPUnit\Framework\Attributes\Test]

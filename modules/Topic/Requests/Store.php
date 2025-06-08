@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Topic\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -13,7 +14,7 @@ class Store extends FormRequest
 
     protected function prepareForValidation()
     {
-        if ($this->has('name') && !$this->has('slug')) {
+        if ($this->has('name') && ! $this->has('slug')) {
             $this->merge(['slug' => Str::slug($this->input('name'))]);
         }
     }

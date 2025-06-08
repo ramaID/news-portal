@@ -22,6 +22,7 @@
         </include>
         <exclude>
             <directory suffix=".blade.php">modules/*/resources</directory>
+            <directory suffix=".php">modules/*/routes</directory>
         </exclude>
     </source>
     <coverage>

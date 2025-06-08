@@ -13,9 +13,8 @@ use Laravolt\Suitable\AutoSort;
 
 class Topic extends Model
 {
-    use HasFactory, HasUlids, SoftDeletes;
-
     use AutoFilter, AutoSearch, AutoSort;
+    use HasFactory, HasUlids, SoftDeletes;
 
     protected $searchableColumns = ['name', 'slug', 'description'];
 

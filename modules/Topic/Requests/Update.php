@@ -13,6 +13,7 @@ class Update extends Store
     public function rules()
     {
         $topicId = $this->route('topic')->id;
+
         return [
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:topics,slug,'.$topicId],
