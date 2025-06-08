@@ -2,10 +2,10 @@
 
 namespace Modules\Post\Tests;
 
+use Tests\TestCase;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use Modules\Post\Models\Post;
-use Tests\TestCase;
 
 class PostTest extends TestCase
 {
@@ -18,8 +18,7 @@ class PostTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create();
-        $this->actingAs($this->user);
+        $this->actingAs($this->getAdminUser());
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -38,8 +37,11 @@ class PostTest extends TestCase
     public function it_can_store_data()
     {
         $attributes = Post::factory()->raw();
+        unset($attributes['published_at']);
 
-        $this->post(route('modules::post.store'), $attributes)->assertStatus(302);
+        $this->post(route('modules::post.store'), $attributes)
+            ->assertStatus(302)
+            ->assertSessionDoesntHaveErrors();
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -63,10 +65,12 @@ class PostTest extends TestCase
     {
         $post = Post::factory()->create();
         $attributes = $post->toArray();
-        $attributes['created_by'] = 'Updated Value';
         $attributes['title'] = 'Updated Title';
+        $attributes['published_at'] = now()->toDateTimeString();
 
-        $this->put(route('modules::post.update', $post), $attributes)->assertStatus(302);
+        $this->put(route('modules::post.update', $post), $attributes)
+            ->assertStatus(302)
+            ->assertSessionDoesntHaveErrors();
     }
 
     #[\PHPUnit\Framework\Attributes\Test]

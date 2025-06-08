@@ -3073,16 +3073,16 @@
         },
         {
             "name": "laravolt/laravolt",
-            "version": "v6.3.0",
+            "version": "v6.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravolt/laravolt.git",
-                "reference": "879a3e78d5f00347ea7119fa6807fa2224068445"
+                "reference": "34ca1a232ff227d928ede9daaa24ea4a9a374ebb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravolt/laravolt/zipball/879a3e78d5f00347ea7119fa6807fa2224068445",
-                "reference": "879a3e78d5f00347ea7119fa6807fa2224068445",
+                "url": "https://api.github.com/repos/laravolt/laravolt/zipball/34ca1a232ff227d928ede9daaa24ea4a9a374ebb",
+                "reference": "34ca1a232ff227d928ede9daaa24ea4a9a374ebb",
                 "shasum": ""
             },
             "require": {
@@ -3186,9 +3186,9 @@
             "description": "The Laravolt Platform.",
             "support": {
                 "issues": "https://github.com/laravolt/laravolt/issues",
-                "source": "https://github.com/laravolt/laravolt/tree/v6.3.0"
+                "source": "https://github.com/laravolt/laravolt/tree/v6.3.4"
             },
-            "time": "2025-05-25T19:07:21+00:00"
+            "time": "2025-06-08T11:40:15+00:00"
         },
         {
             "name": "lavary/laravel-menu",

@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravolt\Suitable\AutoFilter;
+use Laravolt\Suitable\AutoSearch;
+use Laravolt\Suitable\AutoSort;
 
 class Post extends Model
 {
+    use AutoFilter, AutoSearch, AutoSort;
     use HasFactory, HasUlids, SoftDeletes;
 
     protected $fillable = [
+        'id',
         'topic_id',
         'created_by',
         'title',
@@ -27,6 +32,17 @@ class Post extends Model
 
     protected $casts = [
         'published_at' => 'datetime',
+    ];
+
+    protected $searchableColumns = [
+        'created_by',
+        'title',
+        'slug',
+        'summary',
+        'body',
+        'featured_image',
+        'status',
+        'published_at',
     ];
 
     public function getRouteKeyName(): string
