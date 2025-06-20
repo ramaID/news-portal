@@ -40,6 +40,11 @@ class PostPolicy
         return $user->can(AppPermissionEnum::POST_CREATE);
     }
 
+    public function show(User $user, Post $post): bool
+    {
+        return $user->can(AppPermissionEnum::POST_VIEW) && $post->created_by === $user->id;
+    }
+
     public function update(User $user, Post $post): bool
     {
         return $user->can(AppPermissionEnum::POST_EDIT) && $post->created_by === $user->id;

@@ -2,30 +2,37 @@
 
 namespace Modules\Post\Tables;
 
+use App\Models\Post;
 use Laravolt\Suitable\Columns\Numbering;
 use Laravolt\Suitable\Columns\RestfulButton;
 use Laravolt\Suitable\Columns\Text;
 use Laravolt\Suitable\TableView;
-use Modules\Post\Models\Post;
 
 class PostTableView extends TableView
 {
     public function source()
     {
-        return Post::autoSort()->latest()->autoSearch(request('search'))->paginate();
+        $query = Post::query()
+            ->select(['id', 'topic_id', 'created_by', 'title', 'slug', 'status'])
+            ->latest('id')
+            ->with(['topic', 'writer'])
+            ->autoSort()
+            ->autoSearch(request('search'));
+
+        if (!auth()->user()->hasRole('admin')) {
+            $query->where('created_by', auth()->id());
+        }
+
+        return $query->paginate();
     }
 
     protected function columns()
     {
         return [
             Numbering::make('No'),
-            Text::make('topic_id')->sortable(),
-            Text::make('created_by')->sortable(),
+            Text::make('writer.name', 'Writer'),
             Text::make('title')->sortable(),
-            Text::make('slug')->sortable(),
-            Text::make('summary')->sortable(),
-            Text::make('body')->sortable(),
-            Text::make('featured_image')->sortable(),
+            Text::make('topic.name', 'Topic'),
             Text::make('status')->sortable(),
             Text::make('published_at')->sortable(),
             RestfulButton::make('modules::post'),
