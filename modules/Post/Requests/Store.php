@@ -28,6 +28,7 @@ class Store extends FormRequest
         }
 
         $this->mergeFeatureImage();
+        $this->mergePublishedAt();
     }
 
     /**
@@ -50,6 +51,13 @@ class Store extends FormRequest
         ];
     }
 
+    protected function mergePublishedAt()
+    {
+        if ($this->input('status') === 'published' && ! $this->has('published_at')) {
+            $this->merge(['published_at' => now()]);
+        }
+    }
+
     protected function mergeFeatureImage(): void
     {
         if ($this->has('_featured_image')) {
@@ -68,7 +76,6 @@ class Store extends FormRequest
 
         // If the post already has a featured image, extract its ID
         if ($featureImage = $this->route('post')->featured_image ?? null) {
-            // TODO: Handle the case where the post already has a featured image, we should delete the old one
             $mediaID = $this->extractIdFromMediaUrl($featureImage);
         }
 

@@ -26,7 +26,12 @@ class PostController extends Controller
 
     public function store(Store $request)
     {
-        $post = Post::create($request->validated());
+        $attributes = $request->validated();
+        $post = Post::create($attributes);
+
+        if ($attributes['status'] === 'published') {
+            $post->update(['published_at' => now()]);
+        }
 
         return to_route('modules::post.show', $post)->withSuccess('Post saved');
     }
@@ -49,7 +54,12 @@ class PostController extends Controller
 
     public function update(Update $request, Post $post)
     {
-        $post->update($request->validated());
+        $attributes = $request->validated();
+        $post->update($attributes);
+
+        if ($attributes['status'] === 'published') {
+            $post->update(['published_at' => now()]);
+        }
 
         return to_route('modules::post.show', $post)->withSuccess('Post saved');
     }
