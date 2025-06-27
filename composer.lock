@@ -3073,16 +3073,16 @@
         },
         {
             "name": "laravolt/laravolt",
-            "version": "v6.10.1",
+            "version": "v6.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravolt/laravolt.git",
-                "reference": "96893a08531c38fa69c14be9dc3cc4a73f7770e1"
+                "reference": "bf59a6c0f2d2da1a213448dbe0dd0d22165f142b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravolt/laravolt/zipball/96893a08531c38fa69c14be9dc3cc4a73f7770e1",
-                "reference": "96893a08531c38fa69c14be9dc3cc4a73f7770e1",
+                "url": "https://api.github.com/repos/laravolt/laravolt/zipball/bf59a6c0f2d2da1a213448dbe0dd0d22165f142b",
+                "reference": "bf59a6c0f2d2da1a213448dbe0dd0d22165f142b",
                 "shasum": ""
             },
             "require": {
@@ -3186,9 +3186,9 @@
             "description": "The Laravolt Platform.",
             "support": {
                 "issues": "https://github.com/laravolt/laravolt/issues",
-                "source": "https://github.com/laravolt/laravolt/tree/v6.10.1"
+                "source": "https://github.com/laravolt/laravolt/tree/v6.11.0"
             },
-            "time": "2025-06-25T09:45:40+00:00"
+            "time": "2025-06-27T08:42:17+00:00"
         },
         {
             "name": "lavary/laravel-menu",
@@ -5724,16 +5724,16 @@
         },
         {
             "name": "spatie/image",
-            "version": "3.8.4",
+            "version": "3.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image.git",
-                "reference": "df315a480113081c5c27958bee9bf3f97f36fe76"
+                "reference": "a63f60b7387ebeacab463e79a95deb7ffed75430"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image/zipball/df315a480113081c5c27958bee9bf3f97f36fe76",
-                "reference": "df315a480113081c5c27958bee9bf3f97f36fe76",
+                "url": "https://api.github.com/repos/spatie/image/zipball/a63f60b7387ebeacab463e79a95deb7ffed75430",
+                "reference": "a63f60b7387ebeacab463e79a95deb7ffed75430",
                 "shasum": ""
             },
             "require": {
@@ -5781,7 +5781,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/image/tree/3.8.4"
+                "source": "https://github.com/spatie/image/tree/3.8.5"
             },
             "funding": [
                 {
@@ -5793,7 +5793,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-04T08:18:18+00:00"
+            "time": "2025-06-27T12:44:55+00:00"
         },
         {
             "name": "spatie/image-optimizer",
