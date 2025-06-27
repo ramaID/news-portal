@@ -1,5 +1,10 @@
 # News Portal - Laravolt Application
 
+[![Quality Gate Status](https://sonar.malescast.tech/api/project_badges/measure?project=ramaID_news-portal&metric=alert_status&token=sqb_f1b347854a21db967c05011fe3702d11dcfda71a)](https://sonar.malescast.tech/dashboard?id=ramaID_news-portal)
+[![Coverage](https://sonar.malescast.tech/api/project_badges/measure?project=ramaID_news-portal&metric=coverage&token=sqb_f1b347854a21db967c05011fe3702d11dcfda71a)](https://sonar.malescast.tech/dashboard?id=ramaID_news-portal)
+[![Duplicated Lines (%)](https://sonar.malescast.tech/api/project_badges/measure?project=ramaID_news-portal&metric=duplicated_lines_density&token=sqb_f1b347854a21db967c05011fe3702d11dcfda71a)](https://sonar.malescast.tech/dashboard?id=ramaID_news-portal)
+[![Lines of Code](https://sonar.malescast.tech/api/project_badges/measure?project=ramaID_news-portal&metric=ncloc&token=sqb_f1b347854a21db967c05011fe3702d11dcfda71a)](https://sonar.malescast.tech/dashboard?id=ramaID_news-portal)
+
 ## Server Requirements
 
 1. PHP 8.4
@@ -28,25 +33,24 @@
 flowchart TD
   USER[Users]
 
-  subgraph SERVER2 [Volt2 - App & Cache Server]
+  subgraph cxi2
+    PROXY[Nginx Proxy Manager]
+    PGSQL17[PostgreSQL 17]
+  end
+
+  subgraph dev
+    MINIO[Minio]
+    SONARQUBE[SonarQube]
     LARAVEL[Laravel App]
     REDIS[Redis]
     MAILPIT[Mailpit]
     MAILPITA[Mailpit Admin]
   end
 
-  subgraph SERVER3 [Volt3 - Storage & Utilities]
-    MINIO[Minio]
-    SONARQUBE[SonarQube]
-    PROXY[Nginx Proxy Manager]
-    METABASE[Metabase]
-  end
-
   PROXY -- "Reverse Proxy" --> MINIO
   PROXY -- "Reverse Proxy" --> LARAVEL
   PROXY -- "Reverse Proxy" --> SONARQUBE
   PROXY -- "Reverse Proxy" --> MAILPITA
-  PROXY -- "Reverse Proxy" --> METABASE
 
   USER -- "Access Application" --> PROXY
   LARAVEL -- "Cache/Queue" --> REDIS
