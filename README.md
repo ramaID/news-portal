@@ -24,8 +24,6 @@
 
 ## Development Setup
 
-![Server Dev](./dev-server-architecture.png)
-
 ```mermaid
 flowchart TD
   USER[Users]
